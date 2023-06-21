@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BinTreeNode } from "./TreeNode";
 import { convertArrayToNode } from "./ConvertArrayToNode";
+import { checkIDUnique } from "./CheckIDUnique";
 
 export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNode | null, errorMessage: string) => void
@@ -71,7 +72,13 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
         try
         {
             let treeNodeFormat: BinTreeNode = JSON.parse(value);
-            this.props.onChange(treeNodeFormat, "");
+            if (!checkIDUnique(treeNodeFormat))
+            {
+                // the IDs are not unique, warn the user to update
+                this.props.onChange(null, "The IDs are not unique, please check!");
+            }
+            else
+                this.props.onChange(treeNodeFormat, "");
         }
         catch (e)
         {

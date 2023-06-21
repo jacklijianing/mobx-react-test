@@ -74,8 +74,14 @@ If the depth of the two children are different, the root must not be the result,
 
 ## Tickets of what's next to do
 
-### 1 Check whether IDs are unique.
+### 1 Check whether IDs are unique. [DONE]
 We are using ID to identifier which subtree is the chosen one in Problem 3, however, since the user could make mistake, it's better to check whether IDs are unique, and if not, we should not valid this inputted JSON.
+
+Done.
+Created CeckIDUnique.tsx to check the tree's IDs.
+When formatting JSON, call the function firstly.
+Used BFS to traverse the tree and used a set to record all IDs, if duplicate, return false.
+(DFS is also OK, using BFS just to show not only recursion method!)
 
 ### 2 Allow user to select whether highlight the smallest subtree containing all deepest nodes.
 We can allow user to select showing it or not.
