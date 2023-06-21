@@ -42,3 +42,49 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## functions and ideas of this web application
+
+### Step 1: Select binary tree array file from local
+We allow user to select the file from local instead of input file location directly so that less exceptions could happen.
+
+### Step 2: Convert the binary tree array data into JSON and show it in the text area
+By calling ConvertArrayToNode.tsx which is the solution of Problem 1, the web page shows the pretty JSON format in the text area.
+In this tsx file, we assume the user is inputting an array with 1-3 elements. 
+If the data format is not an array, or the children amount is not correct, we show error message.
+The first element must be a string or number as the ID, if it is not, we show error message.
+The second and third elements, if exist, must be another array which meets all requirements above also, so that we can transfer it into subtree.
+
+### Step 3: Show the binary tree in visible way
+
+### Step 4: The user is allowed to update JSON in the text area and when he or she inputs a valid JSON, the tree vision updates automatically.
+The users are allowed to update the JSON manually, and if there is any mistake, the page will show error message to alert them.
+
+All above is solution of Problem 2.
+
+### Step 5: In the tree vision, the website detects the smallest subtree containing all deepest nodes.
+
+the project calls ConvertArrayToNode.tsx which is the solution of Problem 3 to determine which subtree is the smallest subtree containing all deepest nodes.
+In this tsx file, we check the tree from the root to all leaves by recursion.
+If the root does not have any children, that is to say it is the only element, the result must be itself, and the depth of this tree is 1.
+If the root has one child, the result must not be this root, because it must be inside of this child's search, and it must be the smaller one than the root. And the depth of this tree is the depth of the subtree + 1.
+If the root has two children, 
+if the depth of the two children are same (this is the reason why we keep calculating the depth of the tree), the root must be the result, because none of its child's search could include the other deepest node in the other child. And the tree height is the children's depth + 1.
+If the depth of the two children are different, the root must not be the result, because it must be in the deeper children's search. We return the deeper children's result, and the tree height is the deeper children's depth + 1.
+
+## Tickets of what's next to do
+
+### 1 Check whether IDs are unique.
+We are using ID to identifier which subtree is the chosen one in Problem 3, however, since the user could make mistake, it's better to check whether IDs are unique, and if not, we should not valid this inputted JSON.
+
+### 2 Allow user to select whether highlight the smallest subtree containing all deepest nodes.
+We can allow user to select showing it or not.
+
+### 3 Add animation effects to the highlight
+To make it easier to view.
+
+### 4 Resize the result dynamatically by the size of the tree.
+Now if the tree is too small, the layout seems to be very empty, and if it is too large, the page may not contain all of them. So we can add JavaScript to calculating the size dynamatically.
+
+### 5 Allow user to drag the result to design, and show the generated JSON result.
+This is a very future idea, just list here for dreaming!
