@@ -9,7 +9,14 @@
 
 .highlightTreeNode{
     border: green solid 2px;
+    animation: blinker 2s linear infinite;
 }
+
+@keyframes blinker {
+    50% {
+      border-color: white;
+    }
+  }
 
 .treeNode > .nodeId{
     font-weight: bold;

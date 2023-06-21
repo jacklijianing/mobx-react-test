@@ -89,8 +89,11 @@ We can allow user to select showing it or not.
 Done.
 Added a checkbox in the output container to allow user to select whether to outline the smallest subtree or not.
 
-### 3 Add animation effects to the highlight
+### 3 Add animation effects to the highlight [DONE]
 To make it easier to view.
+
+Done.
+Made the border flashing to show more clearly.
 
 ### 4 Resize the result dynamatically by the size of the tree.
 Now if the tree is too small, the layout seems to be very empty, and if it is too large, the page may not contain all of them. So we can add JavaScript to calculating the size dynamatically.
