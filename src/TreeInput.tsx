@@ -1,18 +1,21 @@
 import * as React from "react";
 import { BinTreeNode } from "./TreeNode";
+import { convertArrayToNode } from "./ConvertArrayToNode";
 
 export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNode) => void
 }
 interface TreeInputState {
-    treeText: string
+    treeText: string,
+    treeJSON: string
 }
 
 export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
     constructor(props: TreeInputProps) {
         super(props);
         this.state = {
-            treeText: ""
+            treeText: "",
+            treeJSON: ""
         }
     }
 
@@ -22,28 +25,62 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
      * @returns TreeNode format
      * */
     parseArrayToTree(arrayFormat: any[]): BinTreeNode {
-        return new BinTreeNode("toBeImplemeted", null, null);
+        return convertArrayToNode(arrayFormat);
     }
 
     convert = () => {
         // After you implement parseArrayToTree above, uncomment the below code
-        // let treeArrayFormat: any[] = JSON.parse(this.state.treeText);
-        // this.props.onChange(this.parseArrayToTree(treeArrayFormat));
+        try
+        {
+            let treeArrayFormat: any[] = JSON.parse(this.state.treeText);
+            let root: BinTreeNode = this.parseArrayToTree(treeArrayFormat);
+            this.setState({
+                treeJSON: JSON.stringify(this.parseArrayToTree(treeArrayFormat), null, 2)
+            });
+            this.props.onChange(root);
+        } catch (e)
+        {
+            //TODO: throw error message
+            alert("ERROR");
+        }
+
 
         // After you implement parseArrayToTree above, comment the below code
-        let treeNodeFormat: BinTreeNode = JSON.parse(this.state.treeText);
-        this.props.onChange(treeNodeFormat);
+        // let treeNodeFormat: BinTreeNode = JSON.parse(this.state.treeText);
+        // this.props.onChange(treeNodeFormat);
+    }
+
+    triggerFormat = (value: string) => {
+        try
+        {
+            let treeNodeFormat: BinTreeNode = JSON.parse(value);
+            this.props.onChange(treeNodeFormat);
+        }
+        catch (e)
+        {
+            // do nothing, if the json is not correct we just don't change the content of the page
+        }
+
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.convert}>Process</button><br />
-                <textarea rows={5} cols={120} onChange={(ev) => {
+                <input onChange={(ev) => {
                     this.setState({
                         treeText: ev.target.value
                     })
-                }}></textarea>
+                }}></input>
+                <button onClick={this.convert}>Process</button><br />
+                <textarea rows={5} cols={600} 
+                value={this.state.treeJSON}
+                 onChange={(ev) => {
+                    this.setState({
+                        treeJSON: ev.target.value
+                    })
+                    this.triggerFormat(ev.target.value);
+                }}
+                ></textarea>
             </div>
         )
     }

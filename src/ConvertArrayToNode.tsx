@@ -30,22 +30,7 @@ function convertOneNode(node: any[]): BinTreeNode
     if (typeof node[0] == "string" || typeof node[0] == "number")
     {
         // check node[1] and node[2] are arrays or not, and determine convert or not
-        if (node[1] == null && node[2] == null)
-        {
-            return new BinTreeNode(node[0], null, null);
-        }
-        else if (node[1] == null)
-        {
-            return new BinTreeNode(node[0], null, convertOneNode(node[2]));
-        }
-        else if (node[2] == null)
-        {
-            return new BinTreeNode(node[0], convertOneNode(node[1]), null);
-        }
-        else 
-        {
-            return new BinTreeNode(node[0], convertOneNode(node[1]), convertOneNode(node[2]));
-        }
+        return new BinTreeNode(node[0], (node[1] == null)? null : convertOneNode(node[1]), (node[2] == null) ? null : convertOneNode(node[2]));
     }
     else
     {

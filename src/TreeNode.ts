@@ -7,4 +7,20 @@ export class BinTreeNode {
         this.left = left;
         this.right = right
     }
+    public toJSON = () : any => {
+        if (this.left == null && this.right == null)
+        {
+            return {
+                id: this.id
+            };
+        }
+        else
+        {
+            return {
+                id: this.id,
+                left: (this.left == null)? null : this.left?.toJSON(),
+                right: (this.right == null)? null : this.right?.toJSON(),
+            };
+        }
+    }
 }

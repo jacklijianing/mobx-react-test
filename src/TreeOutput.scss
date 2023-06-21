@@ -1,14 +1,25 @@
 .treeNode{
     // fill me in
+    padding: 10px;
+    border: purple solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .treeNode > .nodeId{
     font-weight: bold;
 }
+
 .treeNode > .nodeChildren{
     //fill me in
+    border: orange solid 1px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    align-items: flex-start;
 }
 
 .nodeChildren > .treeNode{
-    
+    margin: 0 5px;   
 }
