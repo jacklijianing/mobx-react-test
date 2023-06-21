@@ -47,6 +47,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Step 1: Select binary tree array file from local
 We allow user to select the file from local instead of input file location directly so that less exceptions could happen.
+![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/2df0d220-151e-4571-854b-f311e904e196)
+
 
 ### Step 2: Convert the binary tree array data into JSON and show it in the text area
 By calling ConvertArrayToNode.tsx which is the solution of Problem 1, the web page shows the pretty JSON format in the text area.
@@ -59,6 +61,8 @@ The second and third elements, if exist, must be another array which meets all r
 
 ### Step 4: The user is allowed to update JSON in the text area and when he or she inputs a valid JSON, the tree vision updates automatically.
 The users are allowed to update the JSON manually, and if there is any mistake, the page will show error message to alert them.
+![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/94f8a4c7-c55e-4de8-8256-fc6beb78cff5)
+
 
 All above is solution of Problem 2.
 
@@ -72,6 +76,9 @@ If the root has two children,
 if the depth of the two children are same (this is the reason why we keep calculating the depth of the tree), the root must be the result, because none of its child's search could include the other deepest node in the other child. And the tree height is the children's depth + 1.
 If the depth of the two children are different, the root must not be the result, because it must be in the deeper children's search. We return the deeper children's result, and the tree height is the deeper children's depth + 1.
 
+![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/1d01478b-e8d3-4a8d-b21f-86b490d6c3e0)
+
+
 ## Tickets of what's next to do
 
 ### 1 Check whether IDs are unique. [DONE]
@@ -83,11 +90,17 @@ When formatting JSON, call the function firstly.
 Used BFS to traverse the tree and used a set to record all IDs, if duplicate, return false.
 (DFS is also OK, using BFS just to show not only recursion method!)
 
+![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/10f69c57-9484-41b4-af4b-77e957124f95)
+
+
 ### 2 Allow user to select whether highlight the smallest subtree containing all deepest nodes. [DONE]
 We can allow user to select showing it or not.
 
 Done.
 Added a checkbox in the output container to allow user to select whether to outline the smallest subtree or not.
+
+![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/a6f5b2cf-7e3e-46ef-82eb-9cc97f1ab726)
+
 
 ### 3 Add animation effects to the highlight [DONE]
 To make it easier to view.
