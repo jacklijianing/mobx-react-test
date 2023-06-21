@@ -32,7 +32,23 @@ const BodyRenderer: React.FunctionComponent<BodyProps> = observer((props) => {
             }} />
             Output
             <div className="OutputContainer">
-                <TreeOutput treeNode={props.appState.treeNode} highlightTreeNode = {FindSubTreeWithAllDeepestNode(props.appState.treeNode)}/>
+                <label>
+                    <input type="checkbox" 
+                    checked = {props.appState!.highlightSubtree}
+                    onChange={() => {
+                        props.appState.setState({
+                            ...props.appState,
+                            highlightSubtree: !props.appState.highlightSubtree
+                                        
+                        });
+                }}/>
+                    Highlight the smallest subtree containing all deepest nodes
+                </label>
+                <TreeOutput treeNode={props.appState.treeNode} highlightTreeNode = {
+                    props.appState.highlightSubtree? 
+                    FindSubTreeWithAllDeepestNode(props.appState.treeNode) 
+                    : null
+                    }/>
             </div>
         </main>
     );

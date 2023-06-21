@@ -83,8 +83,11 @@ When formatting JSON, call the function firstly.
 Used BFS to traverse the tree and used a set to record all IDs, if duplicate, return false.
 (DFS is also OK, using BFS just to show not only recursion method!)
 
-### 2 Allow user to select whether highlight the smallest subtree containing all deepest nodes.
+### 2 Allow user to select whether highlight the smallest subtree containing all deepest nodes. [DONE]
 We can allow user to select showing it or not.
+
+Done.
+Added a checkbox in the output container to allow user to select whether to outline the smallest subtree or not.
 
 ### 3 Add animation effects to the highlight
 To make it easier to view.

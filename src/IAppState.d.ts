@@ -6,6 +6,7 @@ interface IAppState {
     bodyMessage: string;
     errorMessage: string;
     treeNode: BinTreeNode;
+    highlightSubtree: boolean;
     
     setState(newState: IAppState)
 }

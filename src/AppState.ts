@@ -14,6 +14,8 @@ export class AppState implements IAppState {
 
     @observable treeNode = new BinTreeNode("root", null, null);
 
+    @observable highlightSubtree = true;
+
     constructor() {
         makeObservable(this)
     }
@@ -22,7 +24,8 @@ export class AppState implements IAppState {
         this.title = newState.title;
         this.bodyMessage = newState.bodyMessage;
         this.errorMessage = newState.errorMessage;
-        this.treeNode = newState.treeNode
+        this.treeNode = newState.treeNode;
+        this.highlightSubtree = newState.highlightSubtree;
     }
 }
 
