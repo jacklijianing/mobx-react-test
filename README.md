@@ -57,6 +57,8 @@ If the data format is not an array, or the children amount is not correct, we sh
 The first element must be a string or number as the ID, if it is not, we show error message.
 The second and third elements, if exist, must be another array which meets all requirements above also, so that we can transfer it into subtree.
 
+There is ConvertArrayToNode.test.tsx as UT to test the function result.
+
 ### Step 3: Show the binary tree in visible way
 
 ### Step 4: The user is allowed to update JSON in the text area and when he or she inputs a valid JSON, the tree vision updates automatically.
@@ -68,13 +70,15 @@ All above is solution of Problem 2.
 
 ### Step 5: In the tree vision, the website detects the smallest subtree containing all deepest nodes.
 
-the project calls ConvertArrayToNode.tsx which is the solution of Problem 3 to determine which subtree is the smallest subtree containing all deepest nodes.
+the project calls FindSubTreeWithAllDeepestNode.tsx which is the solution of Problem 3 to determine which subtree is the smallest subtree containing all deepest nodes.
 In this tsx file, we check the tree from the root to all leaves by recursion.
 If the root does not have any children, that is to say it is the only element, the result must be itself, and the depth of this tree is 1.
 If the root has one child, the result must not be this root, because it must be inside of this child's search, and it must be the smaller one than the root. And the depth of this tree is the depth of the subtree + 1.
 If the root has two children, 
 if the depth of the two children are same (this is the reason why we keep calculating the depth of the tree), the root must be the result, because none of its child's search could include the other deepest node in the other child. And the tree height is the children's depth + 1.
 If the depth of the two children are different, the root must not be the result, because it must be in the deeper children's search. We return the deeper children's result, and the tree height is the deeper children's depth + 1.
+
+There is FindSubTreeWithAllDeepestNode.test.jsx as United Test to test the function result.
 
 ![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/1d01478b-e8d3-4a8d-b21f-86b490d6c3e0)
 
@@ -89,6 +93,8 @@ Created CeckIDUnique.tsx to check the tree's IDs.
 When formatting JSON, call the function firstly.
 Used BFS to traverse the tree and used a set to record all IDs, if duplicate, return false.
 (DFS is also OK, using BFS just to show not only recursion method!)
+
+There is CheckIDUnique.test.tsx as United Test to test the result.
 
 ![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/10f69c57-9484-41b4-af4b-77e957124f95)
 
