@@ -1,8 +1,6 @@
 import { convertArrayToNode } from "./ConvertArrayToNode";
 import { BinTreeNode } from "./TreeNode";
 
-import { readFileSync } from 'fs';
-
 test('single root test', () => {
     expect(convertArrayToNode([1])).toMatchObject(({"id":1, "left":null, "right":null}));
 });
