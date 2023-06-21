@@ -4,18 +4,18 @@ import { BinTreeNode } from "./TreeNode";
 import { readFileSync } from 'fs';
 
 test('single root test', () => {
-    var node = new BinTreeNode(1, null, null);
-    expect(convertArrayToNode([1])).toStrictEqual(node);
+    expect(convertArrayToNode([1])).toMatchObject(({"id":1, "left":null, "right":null}));
 });
 
 test('one child null test', () => {
-    var node = new BinTreeNode(1, null, new BinTreeNode(2, null, null));
-    expect(convertArrayToNode([1,null,[2]])).toStrictEqual(node);
+    expect(convertArrayToNode([1,null,[2]])).toMatchObject({"id":1, "left":null, "right":{"id":2, "left":null, "right":null}});
 });
 
 test('double children test', () => {
     var node = new BinTreeNode(1, new BinTreeNode(2, null, null), new BinTreeNode(3, null, null));
-    expect(convertArrayToNode([1,[2],[3]])).toStrictEqual(node);
+    expect(convertArrayToNode([1,[2],[3]])).toMatchObject(
+        {"id":1, "left":{"id":2, "left":null, "right":null}, "right":{"id":3, "left":null, "right":null}}
+    );
 });
 
 

@@ -6,7 +6,7 @@ export interface TreeInputProps {
     onChange: (newTreeNode: BinTreeNode) => void
 }
 interface TreeInputState {
-    treeText: string,
+    file: File | null,
     treeJSON: string
 }
 
@@ -14,7 +14,7 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
     constructor(props: TreeInputProps) {
         super(props);
         this.state = {
-            treeText: "",
+            file: null,
             treeJSON: ""
         }
     }
@@ -28,11 +28,29 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
         return convertArrayToNode(arrayFormat);
     }
 
-    convert = () => {
+    upload = () => {
+        // read file content
+        const reader = new FileReader();
+        if (this.state.file)
+            reader.readAsText(this.state.file);
+
+        reader.onload = () => {
+            // call convert to process
+            if (reader.result)
+                this.convert(reader.result as string);
+        }
+
+        reader.onerror = () => {
+            // TODO: show file load error message
+            alert("File ERROR");
+        }
+    }
+
+    convert = (treeText: string) => {
         // After you implement parseArrayToTree above, uncomment the below code
         try
         {
-            let treeArrayFormat: any[] = JSON.parse(this.state.treeText);
+            let treeArrayFormat: any[] = JSON.parse(treeText);
             let root: BinTreeNode = this.parseArrayToTree(treeArrayFormat);
             this.setState({
                 treeJSON: JSON.stringify(this.parseArrayToTree(treeArrayFormat), null, 2)
@@ -66,13 +84,20 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
     render() {
         return (
             <div>
-                <input onChange={(ev) => {
-                    this.setState({
-                        treeText: ev.target.value
-                    })
+                Tree Source
+                <br />
+                <input size = {120} type="file" onChange={(ev) => {
+                    if (ev.target.files)
+                    {
+                        this.setState({
+                            file: ev.target.files[0]
+                        })
+                    }
                 }}></input>
-                <button onClick={this.convert}>Process</button><br />
-                <textarea rows={5} cols={600} 
+                <br />
+                <button onClick={this.upload}>Fetch</button><br />
+                Tree Text
+                <textarea rows={20} cols={120} 
                 value={this.state.treeJSON}
                  onChange={(ev) => {
                     this.setState({

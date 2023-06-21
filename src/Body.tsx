@@ -19,6 +19,7 @@ const BodyRenderer: React.FunctionComponent<BodyProps> = observer((props) => {
                     treeNode: newVal
                 })
             }} />
+            Output
             <div className="OutputContainer">
                 <TreeOutput treeNode={props.appState.treeNode} />
             </div>

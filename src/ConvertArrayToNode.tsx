@@ -12,18 +12,23 @@ export function convertArrayToNode(input: any[]): BinTreeNode{
 function convertOneNode(node: any[]): BinTreeNode
 {
     // check node is a valid array before passing into this function, so we can use .length directly
-    if (node.length == 1)
+    if (node.length === 1)
     {
         // [1], only one root without any child
         return new BinTreeNode(node[0], null, null);
     }
-    else if (node.length != 3)
+    else if (node.length === 2)
+    {
+        // [1,[2]] is root 1 with left child as 2
+        return new BinTreeNode(node[0], convertOneNode(node[1]), null);
+    }
+    else if (node.length !== 3)
     {
         // tree node must have 3 values: root, left and right, if it is not, the tree is wrong
         // good example: [1, [2], [3]] [1, [2], null] (left has child and right hasn't)
         // another good example: [1, null, null], this is same to [1]
-        // bad example: [1, [2]] (no right child, illegal, should have a null)
-        // another bad example: [1,2,3] even if the children are leaf, we should also write it as arrays
+        // good example: [1, [2], null] we allow this, it is same to [1,[2]]
+        // bad example: [1,2,3] even if the children are leaf, we should also write it as arrays
 
         throw new Error('The array is not formatted correctly');
     }

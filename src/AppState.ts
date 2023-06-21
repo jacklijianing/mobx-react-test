@@ -8,7 +8,7 @@ import { createContext } from "react";
 export class AppState implements IAppState {
     @observable title = "Tree Traversal";
 
-    @observable bodyMessage = "Process the input text to a BinTreeNode";
+    @observable bodyMessage = "Process the input file to a Tree";
 
     @observable treeNode = new BinTreeNode("root", null, null);
 
