@@ -20,7 +20,7 @@ function convertOneNode(node: any[]): BinTreeNode
     else if (node.length === 2)
     {
         // [1,[2]] is root 1 with left child as 2
-        return new BinTreeNode(node[0], convertOneNode(node[1]), null);
+        return new BinTreeNode(node[0], (node[1] == null)? null : convertOneNode(node[1]), null);
     }
     else if (node.length !== 3)
     {

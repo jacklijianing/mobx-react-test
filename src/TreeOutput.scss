@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.highlightTreeNode{
+    border: green solid 2px;
+}
+
 .treeNode > .nodeId{
     font-weight: bold;
 }

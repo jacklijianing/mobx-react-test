@@ -5,6 +5,7 @@ import { TreeInput } from './TreeInput';
 import { TreeOutput } from './TreeOutput';
 import "./Body.scss"
 import { useAppStateContext } from './AppState';
+import { FindSubTreeWithAllDeepestNode } from "./FindSubTreeWithAllDeepestNode";
 interface BodyProps {
     appState: IAppState
 }
@@ -13,6 +14,7 @@ const BodyRenderer: React.FunctionComponent<BodyProps> = observer((props) => {
     return (
         <main className="App-body">
             {props.appState!.bodyMessage}
+
             <TreeInput onChange={(newVal) => {
                 props.appState.setState({
                     ...props.appState,
@@ -21,7 +23,7 @@ const BodyRenderer: React.FunctionComponent<BodyProps> = observer((props) => {
             }} />
             Output
             <div className="OutputContainer">
-                <TreeOutput treeNode={props.appState.treeNode} />
+                <TreeOutput treeNode={props.appState.treeNode} highlightTreeNode = {FindSubTreeWithAllDeepestNode(props.appState.treeNode)}/>
             </div>
         </main>
     );
