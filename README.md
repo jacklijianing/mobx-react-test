@@ -95,8 +95,13 @@ To make it easier to view.
 Done.
 Made the border flashing to show more clearly.
 
-### 4 Resize the result dynamatically by the size of the tree.
+### 4 Resize the result dynamatically by the size of the tree. [PENDING]
 Now if the tree is too small, the layout seems to be very empty, and if it is too large, the page may not contain all of them. So we can add JavaScript to calculating the size dynamatically.
+
+Pending.
+I created a function calculateWidth to calculate the tree width adding some space to calculate the pixel of the container width.
+But the effect is not very good, and I don't have enough time to finish it.
+But I believe calculating width is a common function, when testing binary tree this could also be a point to check, so just leave it there.
 
 ### 5 Allow user to drag the result to design, and show the generated JSON result.
 This is a very future idea, just list here for dreaming!
