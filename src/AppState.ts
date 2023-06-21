@@ -10,6 +10,8 @@ export class AppState implements IAppState {
 
     @observable bodyMessage = "Process the input file to a Tree";
 
+    @observable errorMessage = "";
+
     @observable treeNode = new BinTreeNode("root", null, null);
 
     constructor() {
@@ -19,6 +21,7 @@ export class AppState implements IAppState {
     @action setState(newState: IAppState) {
         this.title = newState.title;
         this.bodyMessage = newState.bodyMessage;
+        this.errorMessage = newState.errorMessage;
         this.treeNode = newState.treeNode
     }
 }

@@ -15,11 +15,20 @@ const BodyRenderer: React.FunctionComponent<BodyProps> = observer((props) => {
         <main className="App-body">
             {props.appState!.bodyMessage}
 
-            <TreeInput onChange={(newVal) => {
+            <div className="ErrorMessage"> {props.appState!.errorMessage}</div>
+            <TreeInput onChange={(newVal, newErrorMessage) => {
                 props.appState.setState({
                     ...props.appState,
-                    treeNode: newVal
-                })
+                    errorMessage: newErrorMessage
+                                   
+                });
+                if (newVal !== null)
+                {
+                    props.appState.setState({
+                        ...props.appState,
+                        treeNode: newVal
+                    })
+                }
             }} />
             Output
             <div className="OutputContainer">

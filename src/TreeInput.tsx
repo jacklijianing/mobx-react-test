@@ -3,7 +3,7 @@ import { BinTreeNode } from "./TreeNode";
 import { convertArrayToNode } from "./ConvertArrayToNode";
 
 export interface TreeInputProps {
-    onChange: (newTreeNode: BinTreeNode) => void
+    onChange: (newTreeNode: BinTreeNode | null, errorMessage: string) => void
 }
 interface TreeInputState {
     file: File | null,
@@ -41,8 +41,8 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
         }
 
         reader.onerror = () => {
-            // TODO: show file load error message
-            alert("File ERROR");
+            //errorMessage
+            this.props.onChange(null, "Reading file error, please verify the file path!");
         }
     }
 
@@ -55,11 +55,10 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
             this.setState({
                 treeJSON: JSON.stringify(this.parseArrayToTree(treeArrayFormat), null, 2)
             });
-            this.props.onChange(root);
+            this.props.onChange(root, "");
         } catch (e)
         {
-            //TODO: throw error message
-            alert("ERROR");
+            this.props.onChange(null, "Parsing array to tree failed, maybe the array is not valid, please check!");
         }
 
 
@@ -72,11 +71,12 @@ export class TreeInput extends React.Component<TreeInputProps, TreeInputState>{
         try
         {
             let treeNodeFormat: BinTreeNode = JSON.parse(value);
-            this.props.onChange(treeNodeFormat);
+            this.props.onChange(treeNodeFormat, "");
         }
         catch (e)
         {
-            // do nothing, if the json is not correct we just don't change the content of the page
+            // if the json is not correct we don't update the result, but we show the error message to let the user check
+            this.props.onChange(null, "JSON is not valid, please check!");
         }
 
     }
