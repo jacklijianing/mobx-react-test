@@ -47,6 +47,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Step 1: Select binary tree array file from local
 We allow user to select the file from local instead of input file location directly so that less exceptions could happen.
+
 ![image](https://github.com/jacklijianing/mobx-react-test/assets/50463651/2df0d220-151e-4571-854b-f311e904e196)
 
 
